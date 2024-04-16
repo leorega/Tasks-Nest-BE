@@ -18,9 +18,9 @@ import { UpdateTaskDto } from "src/dto/update-task.dto";
 export class TasksController {
   constructor(private tasksService: TasksService) {}
 
-  @Get()
-  findAll() {
-    return this.tasksService.findAll();
+  @Get(":user")
+  async findAll(@Param("user") user: string) {
+    return await this.tasksService.findAll(user);
   }
 
   @Get(":id")
