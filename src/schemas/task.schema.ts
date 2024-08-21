@@ -25,6 +25,12 @@ export class Task {
     required: true,
   })
   user: string;
+
+  @Prop({
+    required: true,
+    enum: ["importante", "normal", "tranqui"],
+  })
+  priority: string;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);

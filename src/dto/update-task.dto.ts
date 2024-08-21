@@ -1,4 +1,5 @@
-import { IsBoolean, IsOptional, IsString } from "class-validator";
+import { IsBoolean, IsEnum, IsOptional, IsString } from "class-validator";
+import { TaskPriority } from "./create-task.dto";
 
 export class UpdateTaskDto {
   @IsString()
@@ -12,4 +13,8 @@ export class UpdateTaskDto {
   @IsBoolean()
   @IsOptional()
   done?: boolean;
+
+  @IsEnum(TaskPriority)
+  @IsOptional()
+  priority?: TaskPriority;
 }
