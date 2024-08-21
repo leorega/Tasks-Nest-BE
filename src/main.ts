@@ -5,7 +5,11 @@ import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.enableCors();
+  app.enableCors({
+    origin: "https://tasks-viewer.vercel.app",
+    methods: "GET,PUT,POST,DELETE",
+    credentials: true,
+  });
   app.setGlobalPrefix("api");
   app.useGlobalPipes(new ValidationPipe());
 
