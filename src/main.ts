@@ -7,7 +7,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
     origin: "https://tasks-viewer.vercel.app",
-    methods: "GET,PUT,POST,DELETE",
+    methods: ["GET", "PUT", "POST", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   });
   app.setGlobalPrefix("api");
