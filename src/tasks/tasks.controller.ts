@@ -23,6 +23,14 @@ export class TasksController {
     return await this.tasksService.findAll(user);
   }
 
+  @Get(":user/priority/:priority")
+  async findByPriority(
+    @Param("priority") priority: string,
+    @Param("user") user: string,
+  ) {
+    return await this.tasksService.findByPriority(priority, user);
+  }
+
   @Get(":id")
   async findOne(@Param("id") id: string) {
     try {

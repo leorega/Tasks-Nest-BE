@@ -13,6 +13,16 @@ export class TasksService {
     return this.taskModel.find({ user: user });
   }
 
+  async findByPriority(priority: string, user: string) {
+    if (priority === "todas") {
+      return this.taskModel.find({ user: user });
+    }
+    return this.taskModel.find({
+      user: user,
+      priority: priority,
+    });
+  }
+
   async create(createTask: CreateTaskDto) {
     const newTask = new this.taskModel(createTask);
     return newTask.save();
